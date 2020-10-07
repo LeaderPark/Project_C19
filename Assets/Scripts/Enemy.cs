@@ -1,0 +1,63 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    private int wayPointCount;
+    private Transform[] wayPoints;
+    private int currnetIndex = 0;
+    private Movement2D movement2D;
+    public void Setup(Transform[] wayPoints)
+    {
+        movement2D = GetComponent<Movement2D>();
+
+        wayPointCount = wayPoints.Length;
+        this.wayPoints = new Transform[wayPointCount];
+        this.wayPoints = wayPoints;
+
+        transform.position = wayPoints[currnetIndex].position;
+
+
+        StartCoroutine("OnMove");
+
+    }
+    private IEnumerator OnMove()
+    {
+        
+
+        while(true)
+        {
+            transform.Rotate(Vector3.forward * 10);
+
+            if(Vector3.Distance(transform.position, wayPoints[currnetIndex].position) < 0.02f * movement2D.MoveSpeed )
+            {
+                NextMoveTo();
+            }
+
+            yield return null;
+
+        }
+
+    }
+
+    private void NextMoveTo()
+    {
+        if(currnetIndex < wayPointCount - 1)
+        {
+            transform.position = wayPoints[currnetIndex].position;
+            
+            
+            currnetIndex ++;
+            Vector3 direction = (wayPoints[currnetIndex].position - transform.position).normalized;
+            movement2D.MoveTo(direction);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+}
+
