@@ -28,6 +28,8 @@ public class TowerSpawner : MonoBehaviour
         // 선택한 타일의 위치에 타워 건설
         GameObject clone = Instantiate(towerPreFab, tileTransform.position, Quaternion.identity);
         clone.GetComponent<TowerWeapon>().Setup(enemySpawner);
+
+        
     }
 }
 //File: TowerSpawner.cs

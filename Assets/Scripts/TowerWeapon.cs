@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.XR;
+
 
 public enum WeaponState { SearchTarget = 0, AttackToTarget }
 
@@ -23,11 +20,8 @@ public class TowerWeapon : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        StartCoroutine(SerchTarget());
-
-    }
+    
+   
     public void Setup(EnemySpawner enemySpawner)
     {
         this.enemySpawner = enemySpawner;
@@ -54,13 +48,14 @@ public class TowerWeapon : MonoBehaviour
     {
         float dx = attackTarget.position.x - transform.position.x;
         float dy = attackTarget.position.y - transform.position.y;
+
         float degree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, degree);
     }
-    private IEnumerator SerchTarget()
+    private IEnumerator SearchTarget()
     {
-        while (true)
-        {
+        
+        
             float closestDistSqr = Mathf.Infinity;
 
             for (int i=0; i< enemySpawner.EnemyList.Count; ++i)
@@ -78,32 +73,35 @@ public class TowerWeapon : MonoBehaviour
             }
 
             yield return null;
-        }
+        
     }
     private IEnumerator AttackToTarget()
     {
-        while ( true )
+        while (true)
         {
-            if(attackTarget == null)
+            if (attackTarget == null)
             {
                 ChangeState(WeaponState.SearchTarget);
                 break;
+
             }
             float distance = Vector3.Distance(attackTarget.position, transform.position);
-            
+
             if (distance > attackRange)
             {
                 attackTarget = null;
                 ChangeState(WeaponState.SearchTarget);
                 break;
             }
-        }
-        yield return new WaitForSeconds(attackRate);
+            yield return new WaitForSeconds(attackRate);
 
-        SpawnProjectile();
+            SpawnProjectile();
+
+        }
     }
-    private void SpawnProjectile()
-    {
-        Instantiate(projectilePreFab, spawnPoint.position, Quaternion.identity);
-    }
+        private void SpawnProjectile()
+        {
+            Instantiate(projectilePreFab, spawnPoint.position, Quaternion.identity);
+        }
+    
 }
