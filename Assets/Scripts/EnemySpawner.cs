@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
     private float spawnTime = 0;
     [SerializeField]
     private Transform[] wayPoint;
+    [SerializeField]
+    private PlayerHP playerHP;
     private List<Enemy> enemyList; //현재 맵에 존재하는 모든 적의 정보
 
     public List<Enemy> EnemyList => enemyList;
@@ -36,8 +38,14 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void DestroyEnemy(Enemy enemy)
+    public void DestroyEnemy(EnemyDestroyType type,Enemy enemy)
     {
+        if( type == EnemyDestroyType.Arrive)
+        {
+            playerHP.TakeDamege(1);
+        }
+
+
         enemyList.Remove(enemy);
 
         Destroy(enemy.gameObject);

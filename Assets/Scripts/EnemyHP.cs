@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP = 0;
+    private float maxHP;
 
     private float currentHP;
     public bool isDie = false;
@@ -21,13 +21,20 @@ public class EnemyHP : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (currentHP <= 0)
+        if (isDie == true) return;
+        {
+            currentHP -= damage;
+        }
+        StopCoroutine("HitAlphaAnimation");
+        StartCoroutine("HitAlphaAnimation");
+
+        if(currentHP <= 0)
         {
             isDie = true;
 
-            enemy.OnDie();
-
+            enemy.OnDie(EnemyDestroyType.kill);
         }
+
     }
 
     private IEnumerator HitAlphaAnimation()
