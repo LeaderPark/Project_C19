@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     private int currnetIndex = 0;
     private Movement2D movement2D;
     private EnemySpawner enemySpawner;
-
+    [SerializeField]
+    private int gold = 10;
     public void Setup(EnemySpawner enemySpawner, Transform[] wayPoints)
     {
         movement2D = GetComponent<Movement2D>();
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            gold = 0;
             //Destroy(gameObject);
             OnDie(EnemyDestroyType.Arrive);
         }
@@ -65,7 +67,7 @@ public class Enemy : MonoBehaviour
 
     public void OnDie(EnemyDestroyType type)
     {
-        enemySpawner.DestroyEnemy(type, this);
+        enemySpawner.DestroyEnemy(type, this, gold);
     }
     
 
