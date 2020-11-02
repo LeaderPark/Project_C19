@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7383903348760570183}
   - component: {fileID: 8674460616412159998}
   - component: {fileID: 730349775509095314}
+  - component: {fileID: -4252690545542586657}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bade73855638d418a88ae6138770ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!58 &8674460616412159998
 CircleCollider2D:
@@ -135,3 +136,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4252690545542586657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980469489502118020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e7b672e9e27e6418920c7e47d075df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

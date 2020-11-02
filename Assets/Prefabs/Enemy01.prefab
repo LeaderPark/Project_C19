@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8352855814267799497}
   - component: {fileID: 7410296132830815650}
   - component: {fileID: 2263953248463292852}
+  - component: {fileID: 4837789774379423931}
   m_Layer: 0
   m_Name: Enemy01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 006cda26202489a4eb22457cbe52ac47, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 81894790e1b8a464897b54d6e76ad8fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a576a31d7b23c304885e1f7df3ca76bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 2
 --- !u!114 &7410296132830815650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,4 +124,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef371165ddbb689469d9b0b96ffa0ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
+  maxHP: 2
+  isDie: 0
+--- !u!58 &4837789774379423931
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104251038694805540}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

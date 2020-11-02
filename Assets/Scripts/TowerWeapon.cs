@@ -2,31 +2,53 @@
 using UnityEngine;
 
 
-public enum WeaponState { SearchTarget = 0, AttackToTarget }
+public enum WeaponType { Cannon = 0, Slow, }
+public enum WeaponState { SearchTarget = 0, TryAttackToCannon, }
 
 public class TowerWeapon : MonoBehaviour
 {
+
+    [Header("Commons")]
     [SerializeField]
-    private GameObject projectilePreFab;
+    private TowerTemplate towerTemplate;
     [SerializeField]
     private Transform spawnPoint;
     [SerializeField]
-    private float attackRate = 0.5f;
+    private WeaponType weaponType;
+
+    [Header("Cannon")]
     [SerializeField]
-    private float attackRange = 2.0f;
+    private GameObject projectilePreFab;
+
+    private SpriteRenderer spriteRenderer;
+    private PlayerGold playerGold;
+    private int level = 0;
     private WeaponState weaponState = WeaponState.SearchTarget;
     private Transform attackTarget = null;
     private EnemySpawner enemySpawner;
 
+    public Sprite TowerSprite => towerTemplate.weapon[level].sprite;
+    public float Damage => towerTemplate.weapon[level].damage;
 
+    public float Rate => towerTemplate.weapon[level].rate;
 
+    public float Range => towerTemplate.weapon[level].range;
+    
+    public int Level => level + 1;
+    public int MaxLevel => towerTemplate.weapon.Length;
+    public float Slow => towerTemplate.weapon[level].slow;
     
    
-    public void Setup(EnemySpawner enemySpawner)
+    public void Setup(EnemySpawner enemySpawner, PlayerGold playerGold)
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         this.enemySpawner = enemySpawner;
+        this.playerGold = playerGold;
 
-        ChangeState(WeaponState.SearchTarget);
+        if (weaponType == WeaponType.Cannon)
+        {
+            ChangeState(WeaponState.SearchTarget);
+        }
     }
 
     public void ChangeState(WeaponState newState)
@@ -52,30 +74,79 @@ public class TowerWeapon : MonoBehaviour
         float degree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, degree);
     }
+    private Transform FindClosestAttackTarget()
+    {
+        float closestDistSqr = Mathf.Infinity;
+
+        for (int i = 0; i < enemySpawner.EnemyList.Count; ++i)
+        {
+            float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
+            if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+            {
+                closestDistSqr = distance;
+                attackTarget = enemySpawner.EnemyList[i].transform;
+
+            }
+
+            
+        }
+        return attackTarget;
+    }
+
+    /*private bool IsPossibleToAttackTarget()
+    {
+        if (attackTarget == null)
+        {
+
+            return false;
+
+        }
+        float distance = Vector3.Distance(attackTarget.position, transform.position);
+
+        if (distance > towerTemplate.weapon[level].range)
+        {
+            attackTarget = null;
+            return false;
+        }
+        return false;
+    }*/
+
     private IEnumerator SearchTarget()
     {
-        
-        
+
+        while (true)
+        {
+
+
             float closestDistSqr = Mathf.Infinity;
 
-            for (int i=0; i< enemySpawner.EnemyList.Count; ++i)
+            for (int i = 0; i < enemySpawner.EnemyList.Count; ++i)
             {
                 float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
-                if(distance <= attackRange && distance <= closestDistSqr)
+                if(distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
                 {
                     closestDistSqr = distance;
                     attackTarget = enemySpawner.EnemyList[i].transform;
+
                 }
+
+
             }
-            if( attackTarget != null)
+            attackTarget = FindClosestAttackTarget();
+
+            if (attackTarget != null)
             {
-                ChangeState(WeaponState.AttackToTarget);
+           
+                
+                    ChangeState(WeaponState.TryAttackToCannon);
+                
+
             }
 
             yield return null;
-        
+        }
     }
-    private IEnumerator AttackToTarget()
+    private IEnumerator TryAttackToCannon()
     {
         while (true)
         {
@@ -85,23 +156,50 @@ public class TowerWeapon : MonoBehaviour
                 break;
 
             }
+
             float distance = Vector3.Distance(attackTarget.position, transform.position);
 
-            if (distance > attackRange)
+            if (distance > towerTemplate.weapon[level].range)
             {
                 attackTarget = null;
                 ChangeState(WeaponState.SearchTarget);
                 break;
             }
-            yield return new WaitForSeconds(attackRate);
+
+            
+            
+
+            yield return new WaitForSeconds(towerTemplate.weapon[level].rate);
 
             SpawnProjectile();
 
         }
     }
-        private void SpawnProjectile()
+    private void SpawnProjectile()
+    {
+        GameObject clone = Instantiate(projectilePreFab, spawnPoint.position, Quaternion.identity);
+        clone.GetComponent<ProjectTile>().Setup(attackTarget, towerTemplate.weapon[level].damage);
+    }
+
+    public bool Upgrade()
+    {
+        if(playerGold.CurrentGold < towerTemplate.weapon[level + 1].cost)
         {
-            Instantiate(projectilePreFab, spawnPoint.position, Quaternion.identity);
+            return false;
         }
+
+
+        level++;
+
+        spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
+
+        playerGold.CurrentGold -= towerTemplate.weapon[level].cost;
+
+        return true;
+
+    }
+
+     
+        
     
 }
