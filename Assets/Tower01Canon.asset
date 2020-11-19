@@ -17,33 +17,39 @@ MonoBehaviour:
   followTowerPrefab: {fileID: 7751220991944006530, guid: 7cc9e0a4c3c819a4a9cab319ac0bcb9d,
     type: 3}
   weapon:
-  - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
+  - sprite: {fileID: 21300000, guid: 0820e2e41f08ece4baefc9b4d0e74bdb, type: 3}
     damage: 1
+    slow: 0
     rate: 0.7
     range: 2
     cost: 40
-  - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
+  - sprite: {fileID: 21300000, guid: 0820e2e41f08ece4baefc9b4d0e74bdb, type: 3}
     damage: 1.5
+    slow: 0
     rate: 0.7
     range: 3
     cost: 60
-  - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
+  - sprite: {fileID: 21300000, guid: 0820e2e41f08ece4baefc9b4d0e74bdb, type: 3}
     damage: 1.5
+    slow: 0
     rate: 0.5
     range: 4
     cost: 80
   - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
     damage: 2
+    slow: 0
     rate: 0.4
     range: 4
     cost: 100
   - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
     damage: 2
+    slow: 0
     rate: 0.2
     range: 4
     cost: 200
   - sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
     damage: 2.5
+    slow: 0
     rate: 0.1
     range: 5
     cost: 400

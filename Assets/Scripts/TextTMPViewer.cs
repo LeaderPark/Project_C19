@@ -22,6 +22,8 @@ public class TextTMPViewer : MonoBehaviour
     private WaveSystem waveSystem;
     [SerializeField]
     private EnemySpawner enemySpawner;
+    [SerializeField]
+    private GoldTower goldTower;
     private void Update()
     {
         textPlayerHP.text = playerHP.CurrentHP + "/" + playerHP.MaxHP;

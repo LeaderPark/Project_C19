@@ -79,7 +79,7 @@ public class TowerSpawner : MonoBehaviour
         // 선택한 타일의 위치에 타워 건설
         Vector3 position = tileTransform.position + Vector3.back;
         GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
-        clone.GetComponent<TowerWeapon>().Setup(enemySpawner, playerGold);
+        clone.GetComponent<TowerWeapon>().Setup(this, enemySpawner, playerGold);
 
         Destroy(followTowerClone);
 
@@ -104,6 +104,8 @@ public class TowerSpawner : MonoBehaviour
             yield return null;
         }
     }
+
+    
 }
 //File: TowerSpawner.cs
 //Desc
