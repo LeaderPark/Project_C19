@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public enum WeaponType { Cannon = 0, Slow, }
+public enum WeaponType { Cannon = 0, Slow, Gold, }
 public enum WeaponState { SearchTarget = 0, TryAttackToCannon, }
 
 public class TowerWeapon : MonoBehaviour
@@ -14,7 +14,7 @@ public class TowerWeapon : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
     [SerializeField]
-    private WeaponType weaponType;
+    public WeaponType weaponType;
 
     [Header("Cannon")]
     [SerializeField]
@@ -22,10 +22,14 @@ public class TowerWeapon : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private PlayerGold playerGold;
+    private TowerSpawner towerSpawner;
     private int level = 0;
     private WeaponState weaponState = WeaponState.SearchTarget;
     private Transform attackTarget = null;
     private EnemySpawner enemySpawner;
+    private TowerWeapon weapon;
+
+    
 
     public Sprite TowerSprite => towerTemplate.weapon[level].sprite;
     public float Damage => towerTemplate.weapon[level].damage;
@@ -38,10 +42,17 @@ public class TowerWeapon : MonoBehaviour
     public int MaxLevel => towerTemplate.weapon.Length;
     public float Slow => towerTemplate.weapon[level].slow;
     
-   
-    public void Setup(EnemySpawner enemySpawner, PlayerGold playerGold)
+    public WeaponType WeaponType => weaponType;
+
+    
+    
+     
+
+    
+    public void Setup(TowerSpawner towerSpawner, EnemySpawner enemySpawner, PlayerGold playerGold)
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        this.towerSpawner = towerSpawner;
         this.enemySpawner = enemySpawner;
         this.playerGold = playerGold;
 

@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerGold : MonoBehaviour
 {
     [SerializeField]
-    private int currenntGold = 100;
+    public int CurrentGold = 100;
 
-    public int CurrentGold
+    
+
+    public int CurrenntGold
     {
-        set => currenntGold = Mathf.Max(0, value);
-        get => currenntGold;
+        set => CurrentGold = Mathf.Max(0, value);
+        get => CurrentGold;
     }
 }

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f2ea04365f38dc4448d843567be5ba3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0820e2e41f08ece4baefc9b4d0e74bdb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerTemplate: {fileID: 11400000, guid: 2fbf02dc57fddca469b0724f309e20b7, type: 2}
+  spawnPoint: {fileID: 7094366875527165831}
+  weaponType: 0
   projectilePreFab: {fileID: 2980469489502118020, guid: aab86c5696c0d084f9bfa052e7c4f938,
     type: 3}
-  spawnPoint: {fileID: 7094366875527165831}
 --- !u!65 &4347974176759704774
 BoxCollider:
   m_ObjectHideFlags: 0
