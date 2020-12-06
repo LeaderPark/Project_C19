@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0c15efed9e3551489b2c33a60d7897e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b4fd749499ceef41be03029f0b8c13d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdd108602c6f5644ad9ecae19ca7d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGold: {fileID: -7968032735923254341}
 --- !u!114 &-7968032735923254341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd97fd51fbd43440a9725ac8e3e73ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrenntGold: 100
+  CurrentGold: 100
 --- !u!65 &4124458847747297157
 BoxCollider:
   m_ObjectHideFlags: 0
