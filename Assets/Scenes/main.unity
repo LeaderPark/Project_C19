@@ -1310,49 +1310,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2123303506}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &138603342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 138603344}
-  - component: {fileID: 138603343}
-  m_Layer: 0
-  m_Name: AdManger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &138603343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138603342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069a025ed47fd92409f2f5b406918f9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &138603344
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138603342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.052671, y: -6.016189, z: 277.3776}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &143206980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 784680921008567877, guid: b72ab1296b0bd744a94301e1aadc9de5,
@@ -5681,7 +5638,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26ab383cb76a7445855a9b03f3d8825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 501083956}
 --- !u!4 &509149204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7214449325243707331, guid: 0a3378bddb4c20a4a89a1fec046140e1,
@@ -14490,7 +14446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26ab383cb76a7445855a9b03f3d8825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 501083956}
 --- !u!4 &1631519213
 Transform:
   m_ObjectHideFlags: 0
@@ -14503,7 +14458,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1636748916
 PrefabInstance:
